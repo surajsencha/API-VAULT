@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CustomHeading } from "../components/CustomHeading";
-import { NavBar } from "../components/NavBar";
+import { Navbar } from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
@@ -48,7 +48,7 @@ export const UsageLog = () => {
 
   return (
     <div>
-      <NavBar />
+      <Navbar />
       <div className="min-h-screen bg-[#07090d] text-amber-50 ">
         <CustomHeading label={"Update Api details"} />
         <InputField label="Change Api Name" placeholder="New Name" onChange={()=>{}}/>

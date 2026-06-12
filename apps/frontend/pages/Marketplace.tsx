@@ -1,5 +1,5 @@
 import { CustomDiv } from "../components/CustomDiv";
-import { NavBar } from "../components/NavBar";
+import { Navbar } from "../components/Navbar";
 import { CustomHeading } from "../components/CustomHeading";
 import { InputField } from "../components/InputField";
 import { useState, useEffect } from "react";
@@ -58,7 +58,7 @@ if (!ApiData) {
 }
   return (
     <div className="min-h-screen bg-[#07090d] text-amber-50">
-      <NavBar />
+      <Navbar />
 
       <CustomHeading label="Marketplace" />
 

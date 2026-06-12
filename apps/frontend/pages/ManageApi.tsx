@@ -1,6 +1,6 @@
 import { CustomHeading } from "../components/CustomHeading";
 import { Api } from "../components/Api";
-import { NavBar } from "../components/NavBar";
+import { Navbar } from "../components/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,7 @@ export const ManageApi = () => {
 
   return (
     <div className="min-h-screen bg-[#07090d] text-amber-50">
-      <NavBar />
+      <Navbar />
       <CustomHeading label={"Manage Your Api's Here!"} />
       {
         apis.map((api:any)=>{

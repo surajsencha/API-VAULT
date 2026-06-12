@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CustomButton } from "../components/CustomButtom";
-import { NavBar } from "../components/NavBar";
+import { Navbar } from "../components/Navbar";
 import { CustomDiv } from "../components/CustomDiv";
 import { useEffect,useState } from "react";
 import axios from "axios";
@@ -52,7 +52,7 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen bg-[#07090d] text-amber-50">
-      <NavBar />
+      <Navbar />
        {profile && (
   <CustomDiv
     heading={profile.name}

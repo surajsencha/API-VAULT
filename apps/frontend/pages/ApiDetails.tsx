@@ -1,4 +1,4 @@
-import { NavBar } from "../components/NavBar";
+import { Navbar } from "../components/Navbar";
 import { Api } from "../components/Api";
 import { CustomButton } from "../components/CustomButtom";
 
@@ -130,7 +130,7 @@ export const Apidetials = () => {
   if (existingSubscription) {
     return (
       <div className="min-h-screen bg-[#07090d] text-amber-50">
-        <NavBar />
+        <Navbar />
 
         <div className="max-w-4xl mx-auto mt-10 p-8 bg-[#0f141b] rounded-2xl">
           <h1 className="text-3xl font-bold mb-6">You already own this API</h1>
@@ -158,7 +158,7 @@ export const Apidetials = () => {
 
   return (
     <div className="min-h-screen bg-[#07090d] text-amber-50">
-      <NavBar />
+      <Navbar />
 
       {apiDetails && (
         <Api

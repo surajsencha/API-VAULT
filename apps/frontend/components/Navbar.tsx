@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { CustomButton } from "./CustomButtom";
-export const NavBar = () => {
+export const Navbar = () => {
   const navigate= useNavigate();
   return (
     <nav className="bg-[#07090d] text-white border-b border-zinc-800 w-lvw">
