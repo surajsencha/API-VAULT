@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+   previewFeatures = ["fullTextSearchPostgres"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  USER
+  PLATFORM
+}
+
+enum ApiStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+model User {
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+  name     String
+  role     Role @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  apis    Api[]
+  apiKeys ApiKey[]
+    transactions Transaction[]
+  subscriptions Subscription[]
+}
+
+model Api {
+  id          String @id @default(cuid())
+  name        String @unique
+  description String
+  baseUrl     String @unique
+  providedUrl String @unique
+  price Float
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id])
+
+  apiKeys   ApiKey[]
+  usageLogs UsageLog[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+    transactions Transaction[]
+  subscriptions Subscription[]
+}
+
+model ApiKey {
+  id  String @id @default(cuid())
+  key String @unique
+
+  userId String
+  apiId  String
+
+  user User @relation(fields: [userId], references: [id])
+  api  Api  @relation(fields: [apiId], references: [id])
+
+  usageLogs UsageLog[]
+
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model UsageLog {
+  id String @id @default(cuid())
+
+  apiId    String
+  apiKeyId String
+
+  endpoint   String
+  statusCode Int
+
+  api    Api    @relation(fields: [apiId], references: [id])
+  apiKey ApiKey @relation(fields: [apiKeyId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+model Transaction {
+  id String @id @default(cuid())
+
+  userId String
+  apiId String
+  receiverId String 
+  amount Float
+
+  stripeSessionId String? @unique
+
+  status PaymentStatus @default(PENDING)
+
+  user User @relation(fields: [userId], references: [id])
+  api Api @relation(fields: [apiId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+model Subscription {
+  id String @id @default(cuid())
+
+  userId String
+  apiId String
+
+  status SubscriptionStatus @default(ACTIVE)
+
+  startedAt DateTime @default(now())
+  expiresAt DateTime
+
+  user User @relation(fields: [userId], references: [id])
+  api Api @relation(fields: [apiId], references: [id])
+}

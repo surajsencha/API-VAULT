@@ -1,0 +1,21 @@
+{
+ "name": "@apivault/types",
+ "version": "1.0.0",
+ "description": "",
+     "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "keywords": [],
+ "author": "",
+ "license": "ISC",
+ "type": "module",
+ "devDependencies": {
+  "@types/node": "^25.9.1",
+  "typescript": "^6.0.3"
+ },
+ "dependencies": {
+  "zod": "^4.4.3"
+ }
+}
