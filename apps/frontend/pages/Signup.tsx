@@ -41,7 +41,7 @@ export const Signup = () => {
 
         try {
            await axios.post(
-            "http://localhost:3000/api/v1/auth/signup",
+            "https://apivault-api.senchasuraj96.workers.dev/api/v1/auth/signup",
             {
               name: username,
               email,

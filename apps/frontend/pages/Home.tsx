@@ -14,7 +14,7 @@ export const Home = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:3000/api/v1/user/getUserDetail",
+          "https://apivault-api.senchasuraj96.workers.dev/api/v1/user/getUserDetail",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

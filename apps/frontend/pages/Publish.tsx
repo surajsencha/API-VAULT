@@ -16,7 +16,7 @@ export const Publish = () => {
   const publish = async () => {
     try { setLoading(true);
        const response = await axios.post(
-  "http://localhost:3000/api/v1/admin/Url/createUrl",
+  "https://apivault-api.senchasuraj96.workers.dev/api/v1/admin/Url/createUrl",
   {
     name: apiname,
     description,

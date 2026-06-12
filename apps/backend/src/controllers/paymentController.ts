@@ -1,10 +1,12 @@
 import { Context } from "hono";
-import { stripe } from "../lib/stripe.js";
+import { getStripe } from "../lib/stripe.js";
 import { prisma } from "@apivault/db";
 import { randomUUID } from "crypto";
 
 export const stripeWebhook = async (c: Context) => {
-    
+      const stripe = getStripe(c.env.STRIPE_SECRET_KEY);
+
+
   try {
     const body = await c.req.text();
 

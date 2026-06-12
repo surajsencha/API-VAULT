@@ -13,7 +13,7 @@ export const ManageApi = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:3000/api/v1/admin/Url/getMyUrls",
+          "https://apivault-api.senchasuraj96.workers.dev/api/v1/admin/Url/getMyUrls",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

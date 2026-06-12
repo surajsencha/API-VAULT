@@ -17,7 +17,7 @@ export const Signin = () => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3000/api/v1/auth/signin",
+        "https://apivault-api.senchasuraj96.workers.dev/api/v1/auth/signin",
         {
           email,
           password,

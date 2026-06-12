@@ -17,7 +17,7 @@ export const Marketplace = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:3000/api/v1/user/Url/getUrlByName",
+          "https://apivault-api.senchasuraj96.workers.dev/api/v1/user/Url/getUrlByName",
           {
             params: {
               name: ApiName,

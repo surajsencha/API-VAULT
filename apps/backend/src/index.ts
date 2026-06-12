@@ -6,7 +6,12 @@ import adminRoute from "./routes/adminRoute.js";
 import userRoute from "./routes/userRoute.js"
 import paymentRoute from "./routes/paymentRoute.js";
 import { cors } from "hono/cors";
-const app = new Hono();
+type Bindings = {
+  STRIPE_SECRET_KEY: string;
+};
+const app = new Hono<{
+  Bindings: Bindings;
+}>();
 app.use("*", cors());
 app.get("/", (c) => {return c.json("hello !")});
 app.route("/api/v1/auth",authRoute);

@@ -23,7 +23,7 @@ export const Apidetials = () => {
         setLoading(true);
 
         const response = await axios.get(
-          "http://localhost:3000/api/v1/user/Url/getUrlByName",
+          "https://apivault-api.senchasuraj96.workers.dev/api/v1/user/Url/getUrlByName",
           {
             params: {
               name: apiName,
@@ -49,7 +49,7 @@ export const Apidetials = () => {
   const handleBuyApi = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/user/Api/buyApiAccess",
+        "https://apivault-api.senchasuraj96.workers.dev/api/v1/user/Api/buyApiAccess",
         {},
         {
           params: {
@@ -92,7 +92,7 @@ export const Apidetials = () => {
       setLoading(true);
 
       const response = await axios.get(
-        "http://localhost:3000/api/v1/user/Api/getPurchasedApiKey",
+        "https://apivault-api.senchasuraj96.workers.dev/api/v1/user/Api/getPurchasedApiKey",
         {
           params: {
             apiId: existingSubscription.apiId,

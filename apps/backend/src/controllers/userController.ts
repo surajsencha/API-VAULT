@@ -1,6 +1,6 @@
 import { Context } from "hono";
 import { prisma } from "@apivault/db";
-import { stripe } from "../lib/stripe.js";
+import { getStripe } from "../lib/stripe.js";
 import CryptoJS from "crypto-js";
 import axios from "axios";
 
@@ -37,7 +37,7 @@ export const getUrlsByName = async (c: Context) => {
 export const BuyApiAccess = async (c: Context) => {
   const user = c.get("user");
   const apiId = c.req.query("apiId");
-
+    const stripe = getStripe(c.env.STRIPE_SECRET_KEY);
   const api = await prisma.api.findFirst({
     where: {
       id: apiId,
@@ -96,9 +96,9 @@ export const BuyApiAccess = async (c: Context) => {
       },
     ],
 
-    success_url: `http://localhost:5173/success`,
+    success_url: `https://api-vault.pages.dev/success`,
 
-    cancel_url: "http://localhost:5173/marketplace",
+    cancel_url: "https://api-vault.pages.dev/marketplace",
   });
   await prisma.transaction.create({
     data: {
