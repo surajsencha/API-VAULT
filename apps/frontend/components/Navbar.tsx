@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CustomButton } from "../components/CustomButtom";
+import { CustomButton } from "./CustomButtom";
 export const NavBar = () => {
   const navigate= useNavigate();
   return (
