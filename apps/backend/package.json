@@ -11,7 +11,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@apivault/db": "^1.0.0",
+    "@apivault/db": "*",
     "@apivault/types": "^1.0.0",
     "@apivault/zod-schemas": "^1.0.0",
     "@hono/node-server": "^2.0.4",
