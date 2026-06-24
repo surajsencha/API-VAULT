@@ -2,5 +2,17 @@
   "name": "apivault-api",
   "main": "src/index.ts",
   "compatibility_date": "2026-06-12",
-  "compatibility_flags": ["nodejs_compat"]
+  "compatibility_flags": ["nodejs_compat"],
+
+  // IMPORTANT: Sensitive environment variables must be set as secrets via:
+  //   wrangler secret put DATABASE_URL
+  //   wrangler secret put JWT_SECRET
+  //   wrangler secret put STRIPE_SECRET_KEY
+  //   wrangler secret put STRIPE_WEBHOOK_SECRET
+  //   wrangler secret put API_INITIAL
+  //
+  // Non-secret env vars can be added here under [vars]:
+  "vars": {
+    "API_INITIAL": "https://apivault-api.senchasuraj96.workers.dev"
+  }
 }

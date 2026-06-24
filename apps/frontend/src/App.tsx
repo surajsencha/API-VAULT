@@ -28,7 +28,6 @@ function App() {
         <Route path="/error" element={<Error/>}/>
         <Route path="/publish" element={<Publish/>}/>
         <Route path ="/manageApi" element ={<ManageApi/>}/>
-        <Route path ="/manageApi" element ={<ManageApi/>}/>
         <Route path ="/usageLog/:apiId" element ={<UsageLog/>}/>
 
 

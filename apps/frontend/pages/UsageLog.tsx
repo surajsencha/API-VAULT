@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CustomHeading } from "../components/CustomHeading";
 import { Navbar } from "../components/Navbar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import { CustomDiv } from "../components/CustomDiv";
@@ -9,6 +9,7 @@ import { InputField } from "../components/InputField";
 export const UsageLog = () => {
   const [usagelog, setusagelog] = useState<any>([]);
   const [loading, setLoading] = useState(false);
+  const { apiId } = useParams();
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -18,6 +19,9 @@ export const UsageLog = () => {
         const response = await axios.get(
           "https://apivault-api.senchasuraj96.workers.dev/api/v1/admin/Url/getApiCalls",
           {
+            params: {
+              apiId: apiId,
+            },
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
@@ -37,7 +41,7 @@ export const UsageLog = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [apiId]);
   if (loading) {
     return (
       <div className="min-h-screen bg-[#07090d] text-white flex items-center justify-center">
@@ -64,6 +68,7 @@ export const UsageLog = () => {
           {usagelog.map((log: any) => {
             return (
               <CustomDiv
+                key={log.id}
                 heading={log.id}
                 subheading={log.apiId}
                 point={`apiKeyId : ${log.apiKeyId} route : ${log.endpoint} Status code : ${log.statusCode}`}

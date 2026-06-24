@@ -1,6 +1,5 @@
 import type { Context } from "hono";
-import { CreateApiInput, createApiSchema } from "@apivault/zod-schemas";
-import { z } from "zod";
+import { createApiSchema } from "@apivault/zod-schemas";
 import { prisma } from "@apivault/db";
 
 
@@ -36,7 +35,8 @@ export const createUrl = async (c: Context) => {
     return c.json({error:"Provided API name is already taken!"});
   }
 
-  const apiUrl = `${process.env.API_INITIAL}/${slug}/`;
+  const apiInitial = c.env.API_INITIAL;
+  const apiUrl = `${apiInitial}/${slug}/`;
 
   await prisma.api.create({
     data: {

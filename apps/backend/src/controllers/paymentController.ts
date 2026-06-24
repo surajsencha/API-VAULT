@@ -21,11 +21,11 @@ export const stripeWebhook = async (c: Context) => {
       );
     }
     
-
+    const webhookSecret = c.env.STRIPE_WEBHOOK_SECRET;
     const event = stripe.webhooks.constructEvent(
       body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET!
+      webhookSecret
     );
 
     if (event.type === "checkout.session.completed") {

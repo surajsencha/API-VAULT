@@ -49,7 +49,7 @@ export const ManageApi = () => {
       <CustomHeading label={"Manage Your Api's Here!"} />
       {
         apis.map((api:any)=>{
-           return  <Api heading={api.name} subheading={api.description} point={""} label ="View Details" onClick={()=>{navigate(`/usageLog/${api.id}`)}}/>
+           return  <Api key={api.id} heading={api.name} subheading={api.description} point={""} label ="View Details" onClick={()=>{navigate(`/usageLog/${api.id}`)}}/>
         })
       }
     </div>

@@ -172,9 +172,7 @@ export const fetchData = async (c: Context) => {
     const user = c.get("user");
 
     const url = c.req.header("apikey");
-    let route = c.req.header("route");
-     
-    route  ="/";
+    const route = c.req.header("route");
     if (!url) {
       return c.json({ error: "API Key header missing" }, 400);
     }

@@ -5,9 +5,9 @@ import {useState} from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 export const Signup = () => {
-  const [username, setUsername] = useState("John")
-  const [email, setEmail] = useState("john@example.com")
-  const [password, setPassword] = useState("password123")
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const navigate= useNavigate();
   return (
     <div className="min-h-screen bg-[#07090d] text-amber-50 flex items-center justify-center">

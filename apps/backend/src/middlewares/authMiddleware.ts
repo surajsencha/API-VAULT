@@ -1,8 +1,7 @@
 import type { Context, Next } from "hono";
-import jwt from "jsonwebtoken";
+import { verify } from "hono/jwt";
 import { prisma } from "@apivault/db";
-import { JwtPayload } from "@apivault/types";
-import { x64 } from "crypto-js";
+import type { JwtPayload } from "@apivault/types";
 
 
 export const authMiddleware = async (c: Context, next: Next) => {
@@ -20,8 +19,8 @@ export const authMiddleware = async (c: Context, next: Next) => {
     const jwtToken = token.split(" ")[1];
 
     try {
-
-        const decoded = jwt.verify(jwtToken,process.env.JWT_SECRET!) as JwtPayload;
+        const jwtSecret = c.env.JWT_SECRET;
+        const decoded = await verify(jwtToken, jwtSecret) as unknown as JwtPayload;
       
 
         if(!decoded){
@@ -41,7 +40,7 @@ export const authMiddleware = async (c: Context, next: Next) => {
 
     } 
     catch (e) {
-    return c.json({error : e},{status:400});
+    return c.json({error : "Invalid or Expired Token"},{status:400});
     }
 
 }

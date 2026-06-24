@@ -87,7 +87,7 @@ if (!ApiData) {
 
       <div className="p-4 flex flex-col gap-4">
         {ApiData.map((api) => (
-          <div className="flex ">
+          <div className="flex " key={api.id || api.name}>
             <Api
               heading={api.name}
               subheading=""
